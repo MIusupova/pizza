@@ -2,7 +2,6 @@ import { useState } from "react";
 
 const Sort = () => {
     const [open, setOpen] = useState(false)
-    const [selected, setSelected] = useState(0)
     const list = ['популярности', 'цене', 'алфавиту']
     const onclickList = (i) => {setSelected(i)
     setOpen(false)}

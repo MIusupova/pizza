@@ -1,11 +1,16 @@
 import { useState } from "react";
 
-const Sort = () => {
+const Sort = ({sortType, clicSortId}) => {
     const [open, setOpen] = useState(false)
-    const list = ['популярности', 'цене', 'алфавиту']
-    const onclickList = (i) => {setSelected(i)
+    const list = [
+    'по популярности',
+    'по цене (↑)',
+    'по цене (↓)',
+    'по алфавиту (А-Я)',
+    'по алфавиту (Я-А)']
+    const onclickList = (i) => {clicSortId(i)
     setOpen(false)}
-    const sortName = list[selected]
+    const sortName = list[sortType]
     
     return (
         <div className="sort">
@@ -27,7 +32,7 @@ const Sort = () => {
               </div>
               {open && (<div className="sort__popup">
                 <ul>
-                  {list.map((name, i) => <li key={i} onClick={() => onclickList(i)}  className={selected === i ? 'active' : ''}>{name}</li>)}
+                  {list.map((name, i) => <li key={i} onClick={() => clicSortId(i)}  className={sortType === i ? 'active' : ''}>{name}</li>)}
                 </ul>
               </div>)}
             </div>
